@@ -5,6 +5,8 @@ class Character:
 
 class Enigma:
     def __init__(self, text, shift=1):
+        assert isinstance(text, str), "Data type must be string! Maybe you forgot the quotes."
+        assert isinstance(shift, int), "Shift value must be an integer!"
         self.text = text
         self.shift = shift
     def assign(self):
