@@ -4,7 +4,7 @@ class Character:
         self.unicode = ord(self.character)
 
 class Enigma:
-    def __init__(self, text, shift):
+    def __init__(self, text, shift=1):
         self.text = text
         self.shift = shift
     def assign(self):
