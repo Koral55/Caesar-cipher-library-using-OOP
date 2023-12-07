@@ -3,44 +3,37 @@ class Character:
         self.character = character
         self.unicode = ord(self.character)
 
-class Enigma:
-    def __init__(self, text, shift=1):
-        assert isinstance(text, str), "Data type must be string! Maybe you forgot the quotes."
-        assert isinstance(shift, int), "Shift value must be an integer!"
-        self.text = text
-        self.shift = shift
-    def assign(self):
-        list_of_characters = list(self.text)
+
+class Caesar:
+    def __init__(self):
+        pass
+
+    @classmethod
+    def assign(cls, text):
+        list_of_characters = list(text)
         global objects
         objects = []
         for x in list_of_characters:
             a = Character(x)
             objects.append(a)
-    def code(self):
-        global cipher
+
+    @classmethod
+    def code(cls, text, shift=1):
         cipher_list = []
-        self.assign()
+        cls.assign(text)
         for x in objects:
-            x.unicode += self.shift
+            x.unicode += shift
             cipher_list.append(chr(x.unicode))
             cipher = "".join(cipher_list)
-        print(cipher)
+        return cipher
 
-    def decode(self):
-        global uncoded_cipher
+    @classmethod
+    def decode(cls, text, shift=1):
         uncoded_cipher_list = []
-        self.assign()
+        cls.assign(text)
         for x in objects:
-            x.unicode -= self.shift
+            x.unicode -= shift
             uncoded_cipher_list.append(chr(x.unicode))
             uncoded_cipher = "".join(uncoded_cipher_list)
-        print(uncoded_cipher)
-
-
-
-
-
-
-
-
+        return uncoded_cipher
 
